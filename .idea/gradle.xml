@@ -27,6 +27,7 @@
             <option value="$PROJECT_DIR$/global-manager" />
             <option value="$PROJECT_DIR$/global-manager/plugins" />
             <option value="$PROJECT_DIR$/global-manager/references" />
+            <option value="$PROJECT_DIR$/pet" />
           </set>
         </option>
       </GradleProjectSettings>

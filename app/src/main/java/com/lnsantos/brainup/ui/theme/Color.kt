@@ -2,7 +2,8 @@ package com.lnsantos.brainup.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple200 = Color(0xFFBB86FC)
-val Purple500 = Color(0xFF6200EE)
-val Purple700 = Color(0xFF3700B3)
-val Teal200 = Color(0xFF03DAC5)
+val Purple = Color(0xFF4C1E4F)
+val Pink = Color(0xFFF44174)
+val Orange = Color(0xFFFA7E61)
+val Skin = Color(0xFFFEE1C7)
+val Low = Color(0xFFB5A886)

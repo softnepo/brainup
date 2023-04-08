@@ -1,6 +1,6 @@
 [versions]
 #############
-# LIBRARIES #
+# _LIBRARIES #
 #############
 
 # compose
@@ -17,7 +17,7 @@ test_android_junit = "1.1.5"
 test_android_espresso = "3.5.1"
 
 ###########
-# PLUGINS #
+# _PLUGINS #
 ###########
 plugin_android = "7.2.1"
 plugin_android_kotlin = "1.7.0"

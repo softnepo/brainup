@@ -17,5 +17,13 @@ dependencyResolutionManagement {
     versionCatalogs.create("libs") { from(files("references.toml")) }
 }
 
+buildCache {
+    local {
+        directory = File(rootDir, "build-cache")
+        removeUnusedEntriesAfterDays = 30
+    }
+}
+
 rootProject.name = "Brain up"
 include(":app")
+include(":pet")

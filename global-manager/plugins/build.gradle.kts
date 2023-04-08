@@ -10,4 +10,5 @@ repositories {
 
 dependencies {
     compileOnly(gradleApi())
+    implementation("top.softnepo:easy-logic:0.0.12-experimental")
 }
