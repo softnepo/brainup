@@ -20,7 +20,7 @@ test_android_espresso = "3.5.1"
 # PLUGINS #
 ###########
 plugin_android = "7.2.1"
-plugin_android_kotlin = "1.5.31"
+plugin_android_kotlin = "1.7.0"
 
 [libraries]
 
