@@ -1,0 +1,5 @@
+class TestBuildProgress {
+    void registerBuild(){
+        print "Build runner"
+    }
+}
