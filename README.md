@@ -14,6 +14,9 @@ Disponibilizar solução para ajudar pessoas a apreender com sigo mesmo de uma f
 | Framework de Injeção | Dagger hilt |
 | Database ORM | RomDB |
 | Toolkit UI | Compose |
+| Kotlin | 1.7.0 |
+| Java | 11 |
+| Gradle | 7.4.0 |
 
 Esse projeto gerencia os multi-modules utilizando o [global-manager](global-manager/README.md).
 
