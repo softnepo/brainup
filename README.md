@@ -13,6 +13,7 @@ Disponibilizar solução para ajudar pessoas a apreender com sigo mesmo de uma f
 | Linguagem | Kotlin |
 | Framework de Injeção | Dagger hilt |
 | Database ORM | RomDB |
+| Toolkit UI | Compose |
 
 Esse projeto gerencia os multi-modules utilizando o [global-manager](global-manager/README.md).
 
