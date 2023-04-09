@@ -2,7 +2,7 @@
 
 ### Objetivo
 
-Disponibilizar solução para ajudar pessoas a apreender com sigo mesmo de uma forma simples, legal e eficiente utilizando o conceito da (curva de aprendizado)[https://poseducacao.unisinos.br/blog/curva-aprendizagem#:~:text=A%20curva%20de%20aprendizagem%20tem,em%20determinado%20assunto%20ou%20tarefa.] 
+<p>Disponibilizar solução para ajudar pessoas a apreender com sigo mesmo de uma forma simples, legal e eficiente utilizando o conceito da [curva de aprendizado](https://poseducacao.unisinos.br/blog/curva-aprendizagem#:~:text=A%20curva%20de%20aprendizagem%20tem,em%20determinado%20assunto%20ou%20tarefa.)</p> 
 ------------------
 ### Tecnologia
 
@@ -13,9 +13,9 @@ Disponibilizar solução para ajudar pessoas a apreender com sigo mesmo de uma f
 | Framework de Injeção | Dagger hilt |
 | Database ORM | RomDB |
 
-> Decisões em andamento, acompanhe o progresso pelo (miro)[https://miro.com/welcomeonboard/SGNKNkFBWmVnS0JkVGNETkhtZ0pVSWtPWHNBcGo5aVYxeTZnS2FRajhDM1A5OHV5S3JhNzNyTjJUTHNvdGJoRHwzMDc0NDU3MzU0NTg5MjEyMTkyfDI=?share_link_id=502824820012]
+> Decisões em andamento, acompanhe o progresso pelo [miro](https://miro.com/welcomeonboard/SGNKNkFBWmVnS0JkVGNETkhtZ0pVSWtPWHNBcGo5aVYxeTZnS2FRajhDM1A5OHV5S3JhNzNyTjJUTHNvdGJoRHwzMDc0NDU3MzU0NTg5MjEyMTkyfDI=?share_link_id=502824820012)
 
-As escolhas técnicas serão documentada via ARD: Backlog
+<p>As escolhas técnicas serão documentada via ARD: Backlog</p>
 ------------------
 ### Padrões
 ------------------
