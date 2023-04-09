@@ -14,6 +14,8 @@ Disponibilizar solução para ajudar pessoas a apreender com sigo mesmo de uma f
 | Framework de Injeção | Dagger hilt |
 | Database ORM | RomDB |
 
+Esse projeto gerencia os multi-modules utilizando o [global-manager](global-manager/README.md).
+
 > Decisões em andamento, acompanhe o progresso pelo [miro](https://miro.com/welcomeonboard/SGNKNkFBWmVnS0JkVGNETkhtZ0pVSWtPWHNBcGo5aVYxeTZnS2FRajhDM1A5OHV5S3JhNzNyTjJUTHNvdGJoRHwzMDc0NDU3MzU0NTg5MjEyMTkyfDI=?share_link_id=502824820012)
 
 <p>As escolhas técnicas serão documentada via ARD: Backlog</p>
