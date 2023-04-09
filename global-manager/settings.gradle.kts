@@ -16,5 +16,5 @@ buildCache {
     }
 }
 
-rootProject.name = "Global Manager"
+rootProject.name = "Brain Manager"
 include( ":references", ":plugins")

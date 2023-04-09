@@ -1,45 +1,30 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    id("brainup.app.build")
 }
 
 android {
-    compileSdk = 32
 
-    defaultConfig {
-        applicationId = "com.lnsantos.brainup"
-        minSdk = 21
-        targetSdk = 32
-        versionCode = 1
-        versionName = "1.0"
+    defaultConfig.vectorDrawables.useSupportLibrary = true
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables.useSupportLibrary = true
-    }
+    buildTypes.apply {
+        getByName("debug") {
+            isMinifyEnabled = false
+            applicationIdSuffix = ".debug"
+        }
 
-    buildTypes {
         getByName("release") {
             isMinifyEnabled = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "../brainup-proguard-rules.pro"
-            )
+            applicationIdSuffix = ".final"
+            proguardFiles(File(rootDir, "brainup-proguard-rules.pro").path)
+            signingConfig = signingConfigs.getByName("debug")
         }
-    }
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-
-    buildFeatures.compose = true
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.compose.asProvider().get()
+        create("devRelease") {
+           // initWith(getByName("release")) <- Verify setting in futuro
+            isMinifyEnabled = true
+            applicationIdSuffix = ".test"
+            signingConfig = signingConfigs.getByName("debug")
+        }
     }
 
     packagingOptions {
