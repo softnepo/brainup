@@ -9,7 +9,7 @@ Disponibilizar solução para ajudar pessoas a apreender com sigo mesmo de uma f
 
 | Tecnologia  | Escolha |
    |---|---|
-| Aplicativo | Nantivo |
+| Aplicativo | Nativo |
 | Linguagem | Kotlin |
 | Framework de Injeção | Dagger hilt |
 | Database ORM | RomDB |
