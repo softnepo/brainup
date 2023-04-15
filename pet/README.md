@@ -37,9 +37,13 @@ seguindo as configurações abaixo:
 
 ![Pattern](doc/assets/pattern_title.png)
 
-## Contributing
-
-We'd love to accept your patches and contributions to this project. For more
-information, including details on the required Contributor License Agreement
-(CLA), code reviews, and environment setup, see
-[Contributing to Ground for Android](CONTRIBUTING.md). 
+## Todo: Card 
+## Todo: Button
+## Todo: Progress
+## Todo: Loading
+## Todo: Toolbar
+## Todo: Bottom sheet
+## Todo: Card Indicator
+## Todo: Card Statistics
+## Todo: Setting botton
+## Todo: Flip Card
