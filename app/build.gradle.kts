@@ -36,9 +36,10 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.lifecycle.runtime)
+
+    implementation(libs.androidx.compose.activity)
     implementation(project(":pet"))
 
     testImplementation(libs.test.junit)
