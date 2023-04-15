@@ -37,7 +37,7 @@ class ApplicationBuildConfigPlugin : Plugin<Project> {
                 testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
                 setProguardFiles(listOf(File(target.rootDir, "brainup-proguard-rules.pro").path))
 
-                configureBuildType(target.buildDir.path, this) {
+                configureBuildType {
                     (this as ApplicationBaseFlavor).apply {
                         targetSdk = DefaultConfigBuild.SDK_TARGET
                         versionCode = version.replace(".","").toInt()
