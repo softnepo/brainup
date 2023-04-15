@@ -26,8 +26,8 @@ Disponibilizar solução para ajudar pessoas a apreender com sigo mesmo de uma f
 
 ### Padrões
 
-[Conventional branch e commits*](doc/git-pattern.md)
-[Composing builds - global-manager](global-manager/README.md)
-[Design System - Pet](pet/README.md)
-Criação de modulos - Stackspot (Todo)
+- [Conventional branch e commits*](doc/git-pattern.md)
+- [Composing builds - global-manager](global-manager/README.md)
+- [Design System - Pet](pet/README.md)
+- Criação de modulos - Stackspot (Todo)
 ------------------
