@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins { `kotlin-dsl` }
 
 group = "com.lnsantos.brainup.plugins"
@@ -19,7 +21,11 @@ gradlePlugin {
     plugins {
         register("basicBuildConfigPlugin") {
             id = "brainup.module.build"
-            implementationClass = "plugin.BasicBuildConfigPlugin"
+            implementationClass = "plugin.library.BasicBuildConfigPlugin"
+        }
+        register("libraryBuildComposePlugin") {
+            id = "brainup.module.compose"
+            implementationClass = "plugin.library.LibraryBuildComposePlugin"
         }
         register("buildTypePlugin") {
             id = "brainup.build.type"
@@ -27,11 +33,15 @@ gradlePlugin {
         }
         register("applicationBuildConfigPlugin") {
             id = "brainup.app.build"
-            implementationClass = "plugin.ApplicationBuildConfigPlugin"
+            implementationClass = "plugin.application.ApplicationBuildConfigPlugin"
         }
         register("applicationBuildComposePlugin") {
             id = "brainup.app.compose"
-            implementationClass = "plugin.ApplicationBuildComposePlugin"
+            implementationClass = "plugin.application.ApplicationBuildComposePlugin"
         }
     }
+}
+val compileKotlin: KotlinCompile by tasks
+compileKotlin.kotlinOptions {
+    languageVersion = "1.7"
 }

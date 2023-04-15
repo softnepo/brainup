@@ -1,6 +1,7 @@
-package plugin
+package plugin.application
 
 import com.android.build.api.dsl.ApplicationBaseFlavor
+import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.dsl.CommonExtension
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 import org.gradle.api.JavaVersion
@@ -8,7 +9,9 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.plugins.ExtensionAware
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
-import support.getApplicationBuild
+import plugin.DefaultConfigBuild
+import plugin.configureBuildType
+import support.getBuildProject
 import top.softnepo.public.easyLogicPlugins
 import java.io.File
 import java.util.*
@@ -27,7 +30,7 @@ class ApplicationBuildConfigPlugin : Plugin<Project> {
 
         val version : String = properties.getProperty("brainup.version")
 
-        getApplicationBuild {
+        getBuildProject<ApplicationExtension> {
             (this as BaseAppModuleExtension)
             compileSdk = DefaultConfigBuild.SDK_TARGET
 
