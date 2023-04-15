@@ -1,13 +1,24 @@
 plugins {
     id("brainup.module.build")
+    id("brainup.build.type")
+    id("brainup.module.compose")
+}
+
+android {
+    buildFeatures.compose = true
 }
 
 dependencies {
     implementation(libs.androidx.core.ktx)
 
-    implementation(libs.compose.ui)
-    implementation(libs.compose.preview)
-    implementation(libs.compose.material)
-    implementation(libs.compose.activity)
+    api(libs.androidx.compose.foundation)
+    api(libs.androidx.compose.foundation.layout)
+    api(libs.androidx.compose.material.iconsExtended)
+    api(libs.androidx.compose.material3)
+    api(libs.androidx.compose.runtime)
+    api(libs.androidx.compose.ui.tooling.preview)
+    api(libs.androidx.compose.ui.util)
+
+    debugApi(libs.androidx.compose.ui.tooling)
 }
 

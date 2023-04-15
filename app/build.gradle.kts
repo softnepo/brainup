@@ -1,5 +1,6 @@
 plugins {
     id("brainup.app.build")
+    id("brainup.build.type")
 }
 
 android {
@@ -19,7 +20,7 @@ android {
             signingConfig = signingConfigs.getByName("debug")
         }
 
-        create("devRelease") {
+        getByName("devRelease") {
            // initWith(getByName("release")) <- Verify setting in futuro
             isMinifyEnabled = true
             applicationIdSuffix = ".test"
@@ -37,13 +38,8 @@ android {
 dependencies {
 
     implementation(libs.androidx.core.ktx)
-
-    implementation(libs.compose.ui)
-    implementation(libs.compose.preview)
-    implementation(libs.compose.material)
-    implementation(libs.compose.activity)
-
     implementation(libs.lifecycle.runtime)
+    implementation(project(":pet"))
 
     testImplementation(libs.test.junit)
 

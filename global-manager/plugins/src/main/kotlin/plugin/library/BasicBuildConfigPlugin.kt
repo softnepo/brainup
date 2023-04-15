@@ -1,8 +1,9 @@
-package plugin
+package plugin.library
 
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import plugin.DefaultConfigBuild
 import top.softnepo.public.easyLogicBuild
 import top.softnepo.public.easyLogicPlugins
 import java.io.File
