@@ -32,6 +32,7 @@ plugin_android_kotlin = "1.7.0"
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "core_ktx"}
 
 # Compose
+androidx-compose-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "compose_activity" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
 androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
 androidx-compose-foundation-layout = { group = "androidx.compose.foundation", name = "foundation-layout" }

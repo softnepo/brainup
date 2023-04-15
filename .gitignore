@@ -15,3 +15,10 @@
 local.properties
 build-cache
 global-manager/build-cache
+
+.idea/*
+# Keep the code styles.
+!/.idea/codeStyles
+/.idea/codeStyles/*
+!/.idea/codeStyles/Project.xml
+!/.idea/codeStyles/codeStyleConfig.xml
