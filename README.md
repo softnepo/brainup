@@ -18,13 +18,16 @@ Disponibilizar solução para ajudar pessoas a apreender com sigo mesmo de uma f
 | Java | 11 |
 | Gradle | 7.4.0 |
 
-Esse projeto gerencia os multi-modules utilizando o [global-manager](global-manager/README.md).
-
 > Decisões em andamento, acompanhe o progresso pelo [miro](https://miro.com/welcomeonboard/SGNKNkFBWmVnS0JkVGNETkhtZ0pVSWtPWHNBcGo5aVYxeTZnS2FRajhDM1A5OHV5S3JhNzNyTjJUTHNvdGJoRHwzMDc0NDU3MzU0NTg5MjEyMTkyfDI=?share_link_id=502824820012)
-
-<p>As escolhas técnicas serão documentada via ARD: Backlog</p>
-<p>Conheça nosso design system [pet](pet/README.md)</p>
 ------------------
+### ADRs
+
+- WIP
 
 ### Padrões
+
+[Conventional branch e commits*](doc/git-pattern.md)
+[Composing builds - global-manager](global-manager/README.md)
+[Design System - Pet](pet/README.md)
+Criação de modulos - Stackspot (Todo)
 ------------------
