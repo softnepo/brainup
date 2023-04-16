@@ -7,17 +7,6 @@ Utilizamos a versão experimental da biblioteca `easy-logic`, com isso conseguim
 
 > easy-logic:``"top.softnepo:easy-logic:0.0.12-experimental"``
 
-Esse modulo trás o build cache para dentro do projeto, dessa forma facilita a limpeza sem impacta o cache de outros projetos, porém depois de 30 dias o cache será renovado seguindo a configuração em `settings.gradle.kts`
-
-```kotlin
-buildCache {
-    local {
-        directory = File(rootDir, "build-cache")
-        removeUnusedEntriesAfterDays = 30
-    }
-}
-```
-
 ## Plugins existante
 
 | Plugins  | Resumo |
