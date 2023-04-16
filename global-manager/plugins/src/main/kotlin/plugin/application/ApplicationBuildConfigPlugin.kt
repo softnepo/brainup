@@ -56,6 +56,7 @@ class ApplicationBuildConfigPlugin : Plugin<Project> {
 
             kotlinOptions {
                 jvmTarget = JavaVersion.VERSION_11.toString()
+                freeCompilerArgs = arrayListOf()
             }
         }
     }

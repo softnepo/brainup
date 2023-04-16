@@ -13,6 +13,7 @@ class BasicBuildConfigPlugin : Plugin<Project> {
     override fun apply(target: Project) = with(target) {
         easyLogicPlugins {
             applyPlugin("com.android.library")
+            applyPlugin("org.jetbrains.kotlin.android")
         }
         easyLogicBuild {
             compileSdk = DefaultConfigBuild.SDK_TARGET
