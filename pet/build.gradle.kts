@@ -17,4 +17,3 @@ dependencies {
 
     debugApi(libs.androidx.compose.ui.tooling)
 }
-

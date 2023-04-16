@@ -1,17 +1,82 @@
 package com.lnsantos.pet.core
 
+import androidx.compose.material3.Typography
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.lnsantos.pet.R
 
 public sealed class PetValues {
 
+    object Typographies : PetValues() {
+        val extraBold = TextStyle(
+            fontFamily = FontFamily.default,
+            fontWeight = FontWeight.ExtraBold
+        )
+
+        val bold = TextStyle(
+            fontFamily = FontFamily.default,
+            fontWeight = FontWeight.Bold
+        )
+
+        val semiBold = TextStyle(
+            fontFamily = FontFamily.default,
+            fontWeight = FontWeight.SemiBold
+        )
+
+        val normal = TextStyle(
+            fontFamily = FontFamily.default,
+            fontWeight = FontWeight.Normal
+        )
+
+        val black = TextStyle(
+            fontFamily = FontFamily.default,
+            fontWeight = FontWeight.Black
+        )
+
+        val medium = TextStyle(
+            fontFamily = FontFamily.default,
+            fontWeight = FontWeight.Medium
+        )
+
+        val thin = TextStyle(
+            fontFamily = FontFamily.default,
+            fontWeight = FontWeight.Thin
+        )
+
+        val light = TextStyle(
+            fontFamily = FontFamily.default,
+            fontWeight = FontWeight.Light
+        )
+
+        val extraLight = TextStyle(
+            fontFamily = FontFamily.default,
+            fontWeight = FontWeight.ExtraLight
+        )
+
+        val typography = Typography(
+            displayLarge = extraBold,
+            displayMedium = bold,
+            displaySmall = semiBold,
+            headlineLarge = extraBold,
+            headlineMedium = bold,
+            headlineSmall = semiBold,
+            titleLarge = bold,
+            titleMedium = medium,
+            titleSmall = normal,
+            bodyLarge = medium,
+            bodyMedium = thin,
+            bodySmall = light,
+            labelLarge = black,
+            labelMedium = medium,
+            labelSmall = extraLight
+        )
+    }
     object Colors : PetValues() {
         val light = lightColorScheme(
             primary = Primary,
@@ -19,7 +84,8 @@ public sealed class PetValues {
             secondary = Secondary,
             surfaceVariant = SecondaryVariant,
             background = Background,
-            error = Error
+            error = Error,
+            surface = Background
         )
 
         val dark = darkColorScheme(
@@ -28,8 +94,11 @@ public sealed class PetValues {
             secondary = SecondaryDark,
             surfaceVariant = SecondaryVariantDark,
             background = BackgroundDark,
-            error = ErrorDark
+            error = ErrorDark,
+            surface = BackgroundDark
         )
+
+        fun getColorsByScheme(isDark: Boolean) = if (isDark) dark else light
     }
 
     object FontFamily : PetValues() {

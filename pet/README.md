@@ -6,6 +6,8 @@ Esse modulo é responsável por centralizar todos os componentes e configuraçõ
 ao design system, apelidado de **pet** por que está sendo planejado e criado com carinho
 com a ideia de ser um visual simples, prático e fofo.
 
+Projeto está sendo construido utilizando o [material design 3](https://developer.android.com/jetpack/compose/designsystems/material3).
+
 **Note:** Os componentes ainda se encontra em desenvolvimento
 
 ## Algumas especificações
