@@ -5,6 +5,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import com.lnsantos.pet.core.PetValues
 
+typealias PetTheme = MaterialTheme
+
 @Composable
 fun PetTheme(
     isDarkMode: Boolean = isSystemInDarkTheme(),

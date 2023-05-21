@@ -4,6 +4,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import com.lnsantos.pet.text.factory.PetTextStyleFactory
 import com.lnsantos.pet.text.model.PetTextStyle
@@ -16,6 +18,10 @@ fun PetText(
     textColor: Color? = null
 ) {
     val factory = PetTextStyleFactory().invoke(type)
+
+    if (type == PetTextStyle.TITLE) {
+        modifier.semantics { heading() }
+    }
 
     Text(
         modifier = modifier,
