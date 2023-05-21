@@ -20,3 +20,4 @@ dependencyResolutionManagement {
 rootProject.name = "Brain up"
 include(":app")
 include(":pet")
+include(":pet-preview")
