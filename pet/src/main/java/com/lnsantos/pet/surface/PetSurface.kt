@@ -1,7 +1,6 @@
 package com.lnsantos.pet.surface
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,16 +12,12 @@ import androidx.compose.runtime.Stable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.Dp
 import com.lnsantos.pet.core.PetStyle
-import com.lnsantos.pet.core.PetValues
 import com.lnsantos.pet.core.PetValues.Colors.getColorsByScheme
 import com.lnsantos.pet.core.border.Disabled
 import com.lnsantos.pet.core.border.Enabled
 import com.lnsantos.pet.core.border.PetBorder
-import com.lnsantos.pet.core.setupPetSurfaceBackground
 import com.lnsantos.pet.surface.factory.PetSurfaceFactory
 
 @Composable
