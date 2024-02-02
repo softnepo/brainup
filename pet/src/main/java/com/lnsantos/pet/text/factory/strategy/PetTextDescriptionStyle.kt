@@ -6,10 +6,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import com.lnsantos.pet.core.PetValues
-import com.lnsantos.pet.core.delegate.SimplePetExtension
+import com.lnsantos.pet.core.delegate.SimplePetWrapperComposable
 import com.lnsantos.pet.text.model.TextStyleModel
 
-internal class PetTextDescriptionStyle  : SimplePetExtension<TextStyleModel> {
+internal class PetTextDescriptionStyle  : SimplePetWrapperComposable<TextStyleModel> {
     @Composable
     override fun create() = TextStyleModel(
         fontWeight = FontWeight.Normal,

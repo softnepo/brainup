@@ -1,3 +1,8 @@
 package com.lnsantos.pet.core
 
-public enum class PetStyle { LOW, MEDIUM, HIGH }
+public enum class PetStyle {
+    NONE,
+    LOW,
+    MEDIUM,
+    HIGH
+}
