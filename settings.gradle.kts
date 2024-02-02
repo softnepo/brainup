@@ -8,6 +8,7 @@ pluginManagement {
 }
 enableFeaturePreview("VERSION_CATALOGS")
 dependencyResolutionManagement {
+   // includeBuild("global-manager")
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
@@ -21,3 +22,6 @@ rootProject.name = "Brain up"
 include(":app")
 include(":pet")
 include(":pet-preview")
+include(":platform")
+
+//include(":global-manager")

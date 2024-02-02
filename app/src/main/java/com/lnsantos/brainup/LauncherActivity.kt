@@ -9,7 +9,7 @@ import com.lnsantos.pet.text.PetText
 import com.lnsantos.pet.text.model.PetTextStyle
 import com.lnsantos.pet.theme.PetTheme
 
-class MainActivity : ComponentActivity() {
+class LauncherActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
