@@ -7,5 +7,7 @@ import androidx.compose.ui.graphics.Color
 
 @Stable
 internal fun Modifier.setupPetSurfaceBackground(color: Color?) = then(
-    if (color == null) this else background(color = color)
+    if (color == null) this else Modifier.background(color = color)
 )
+
+
