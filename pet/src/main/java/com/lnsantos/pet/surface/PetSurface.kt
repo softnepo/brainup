@@ -3,7 +3,6 @@ package com.lnsantos.pet.surface
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -18,7 +17,7 @@ import com.lnsantos.pet.core.PetValues.Colors.getColorsByScheme
 import com.lnsantos.pet.core.border.Disabled
 import com.lnsantos.pet.core.border.Enabled
 import com.lnsantos.pet.core.border.PetBorder
-import com.lnsantos.pet.surface.factory.PetSurfaceFactory
+import com.lnsantos.pet.core.factory.PetSurfaceFactory
 
 @Composable
 fun PetSurface(
@@ -30,15 +29,15 @@ fun PetSurface(
     content: @Composable () -> Unit
 ) {
     Surface(
-        modifier = modifier
-            .fillMaxSize()
+        modifier = Modifier
             .setupPetBorder(
                 setting = border,
                 style = style,
                 defaultColor = getColorsByScheme(isDarkTheme).secondary
             )
             .setupPetSurfaceStyleByType(style)
-            .setupPaddingByContentInsideBorder(style, border),
+            .setupPaddingByContentInsideBorder(style, border)
+            .then(modifier),
         color = background ?: getColorsByScheme(isDarkTheme).background,
         content = content
     )
@@ -92,7 +91,8 @@ private fun PetBorder.createSetting(
 )
 private fun PreviewPetSurface() {
     PetSurface(
-        style = PetStyle.NONE,
+        modifier = Modifier,
+        style = PetStyle.HIGH,
         border = Enabled(),
         background = Color.White
     ) {

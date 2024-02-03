@@ -4,5 +4,6 @@ public enum class PetStyle {
     NONE,
     LOW,
     MEDIUM,
-    HIGH
+    HIGH,
+    HIGH_X
 }
