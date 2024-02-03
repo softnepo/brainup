@@ -1,4 +1,4 @@
-package com.lnsantos.pet.surface.factory.strategy.clip
+package com.lnsantos.pet.core.factory.strategy.clip
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import com.lnsantos.pet.core.delegate.SimplePetWrapper
