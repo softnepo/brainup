@@ -42,3 +42,33 @@ private fun PreviewButton() {
         }
     }
 }
+
+@Preview(
+    uiMode = Configuration.UI_MODE_NIGHT_YES
+)
+@Composable
+private fun PreviewButtonEnabledDark() {
+    PetTheme {
+        PetButton(
+            style = PetStyle.HIGH_X,
+            enabled = true
+        ) {
+            Text(text = "Login")
+        }
+    }
+}
+
+@Preview(
+    uiMode = Configuration.UI_MODE_NIGHT_NO
+)
+@Composable
+private fun PreviewButtonEnabledLight() {
+    PetTheme {
+        PetButton(
+            style = PetStyle.HIGH_X,
+            enabled = true
+        ) {
+            Text(text = "Login")
+        }
+    }
+}

@@ -8,6 +8,7 @@ import com.lnsantos.pet.core.PetStyle
 import com.lnsantos.pet.core.PetValues
 import com.lnsantos.pet.core.delegate.SimplePetWrapper
 import com.lnsantos.pet.core.exceptions.PetStyleNotImplementedException
+import com.lnsantos.pet.core.extension.petStyleFilter
 import com.lnsantos.pet.core.factory.strategy.clip.PetSurfaceHighClip
 import com.lnsantos.pet.core.factory.strategy.clip.PetSurfaceHighXClip
 import com.lnsantos.pet.core.factory.strategy.clip.PetSurfaceLowClip
@@ -31,9 +32,7 @@ internal class PetSurfaceFactory {
         PetStyle.HIGH -> Dp(PetValues.SizeValues.x3.toFloat())
         else -> throw PetStyleNotImplementedException(
             origin = this::class.simpleName?.plus("::size"),
-            supporters = PetStyle.values().filter {
-                it != PetStyle.HIGH_X
-            }.toTypedArray()
+            supporters = petStyleFilter { it != PetStyle.HIGH_X }
         )
     }
 }
