@@ -21,7 +21,7 @@ android {
         }
 
         getByName("devRelease") {
-           // initWith(getByName("release")) <- Verify setting in futuro
+           // initWith(getByName("release")) <- Verify setting in future
             isMinifyEnabled = true
             applicationIdSuffix = ".test"
             signingConfig = signingConfigs.getByName("debug")
@@ -41,6 +41,10 @@ dependencies {
 
     implementation(libs.androidx.compose.activity)
     implementation(project(":pet"))
+    
+    implementation(libs.androidx.navigation.ui)
+    implementation(libs.androidx.navigation.fragment)
+    implementation(libs.androidx.navigation.compose)
 
     testImplementation(libs.test.junit)
 

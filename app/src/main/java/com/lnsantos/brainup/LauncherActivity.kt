@@ -1,9 +1,11 @@
 package com.lnsantos.brainup
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
+import com.lnsantos.brainup.feature.gateway.GatewayActivity
 import com.lnsantos.pet.surface.PetSurface
 import com.lnsantos.pet.text.PetText
 import com.lnsantos.pet.text.model.PetTextStyle
@@ -32,5 +34,10 @@ class LauncherActivity : ComponentActivity() {
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        startActivity(Intent(this, GatewayActivity::class.java))
     }
 }
