@@ -41,6 +41,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.lnsantos.brainup.R
+import com.lnsantos.brainup.feature.home.widgets.WidgetMemory
 import com.lnsantos.brainup.foundation.navigation.Router
 import com.lnsantos.pet.button.PetButton
 import com.lnsantos.pet.core.PetValues
@@ -132,17 +133,21 @@ class HomeActivity : ComponentActivity() {
                             .fillMaxSize()
                     ) {
                         composable(route = Router.HOME.router) {
-                            Box(
-                                modifier = Modifier
-                                    .fillMaxSize()
-                                    .background(Color.White)
-                            ) {
-
-                            }
+                            HomeScreen(
+                                widgets = WidgetMemory.getWidget(),
+                                onClickWidget = { navController.navigate(it.deeplink) },
+                                onClickMain = { }
+                            )
+                        }
+                        composable(route = Router.MY_CARD.router) {
+                            HomeScreen(
+                                widgets = listOf(),
+                                onClickWidget = { navController.navigate(it.deeplink) },
+                                onClickMain = { }
+                            )
                         }
                     }
                 }
-
             }
         }
     }

@@ -5,4 +5,6 @@
     <string name="gateway_description">Como podemos chama-lo ?</string>
 
     <string name="gateway_description_error">Falha ao cadastrar usuario</string>
+
+    <string name="home_widget_my_cards">Meus cards</string>
 </resources>
