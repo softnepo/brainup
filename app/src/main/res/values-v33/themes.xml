@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.BrainUp" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/main_color</item>
+        <item name="android:windowBackground">@color/main_color</item>
+        <item name="android:windowSplashScreenBackground">@color/main_color</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/brainding_min</item>
+        <item name="android:windowSplashScreenAnimationDuration">1000</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">@android:color/transparent</item>
+        <item name="android:windowSplashScreenBrandingImage">@drawable/brainding_min</item>
+        <item name="android:windowSplashScreenBehavior">icon_preferred</item>
+    </style>
+</resources>

@@ -50,6 +50,8 @@ dependencies {
     implementation(libs.androidx.compose.activity)
     implementation(project(":pet"))
 
+    implementation(libs.androidx.core.splash)
+
     implementation(libs.dagger.hilt.android)
     kapt(libs.dagger.hilt.compiler)
 

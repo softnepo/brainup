@@ -46,7 +46,8 @@ androidx-navigation-ui = { group = "androidx.navigation", name = "navigation-ui-
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
 
 # AndroidX
-androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "core_ktx"}
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "core_ktx" }
+androidx-core-splash = { module = "androidx.core:core-splashscreen", version = "1.0.1" }
 
 # Compose
 androidx-compose-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "compose_activity" }
