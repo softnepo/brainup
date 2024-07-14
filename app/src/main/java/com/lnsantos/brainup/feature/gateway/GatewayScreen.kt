@@ -36,7 +36,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.lnsantos.brainup.R
 import com.lnsantos.pet.core.Terliary
-import com.lnsantos.pet.surface.factory.strategy.clip.PetSurfaceHighClip
+import com.lnsantos.pet.core.factory.strategy.clip.PetSurfaceHighClip
 import com.lnsantos.pet.text.PetText
 import com.lnsantos.pet.text.model.PetTextStyle
 
