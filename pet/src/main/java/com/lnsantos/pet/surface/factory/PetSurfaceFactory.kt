@@ -1,6 +1,5 @@
 package com.lnsantos.pet.surface.factory
 
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.Dp
 import com.lnsantos.pet.core.PetStyle
 import com.lnsantos.pet.core.PetValues

@@ -1,12 +1,17 @@
 package com.lnsantos.brainup.feature.gateway
 
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP
+import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.Modifier
 import com.lnsantos.brainup.feature.home.HomeActivity
+import com.lnsantos.pet.surface.PetSurface
 import com.lnsantos.pet.theme.PetTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,17 +26,21 @@ class GatewayActivity : ComponentActivity() {
             PetTheme {
                 val state = viewmodel.state.collectAsState()
 
-                GatewayScreen(
-                    onNextClick = { viewmodel.create(this) },
-                    isLoading = state.value.isLoading
-                )
+                PetSurface(
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    GatewayScreen(
+                        onNextClick = { viewmodel.create(this) },
+                        isLoading = state.value.isLoading
+                    )
+                }
 
                 if (state.value.next) {
                     val intent = Intent(this, HomeActivity::class.java).apply {
-                        flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                        flags = FLAG_ACTIVITY_CLEAR_TOP or FLAG_ACTIVITY_NEW_TASK
                     }
-
                     startActivity(intent)
+                    finish()
                 }
             }
         }

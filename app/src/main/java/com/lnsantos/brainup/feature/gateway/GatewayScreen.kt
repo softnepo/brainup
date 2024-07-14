@@ -45,7 +45,7 @@ fun GatewayScreen(
     onNextClick: String.() -> Unit,
     isLoading: Boolean = false
 ) {
-    var text by remember { mutableStateOf("") }
+    var text by remember { mutableStateOf(String()) }
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -97,15 +97,14 @@ fun GatewayScreen(
 @Composable
 private fun NameEditText(
     modifier: Modifier = Modifier,
-    maxLength: Int = 30,
-    text: String = "",
+    maxLength: Int = 15,
+    text: String = String(),
     onValueChange: String.() -> Unit
 ) {
     Column(
         modifier = modifier
     ) {
-
-        var currentCharacter by remember { mutableIntStateOf(0) }
+        var currentCharacter by remember { mutableIntStateOf(text.length) }
 
         OutlinedTextField(
             modifier = Modifier
@@ -116,8 +115,8 @@ private fun NameEditText(
             onValueChange = {
                 if (it.length <= maxLength) {
                     onValueChange(it)
-                    currentCharacter = text.length
                 }
+                currentCharacter = it.length
             },
             singleLine = true,
             maxLines = 1

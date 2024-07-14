@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material3.Text
+import com.lnsantos.pet.surface.PetSurface
 import com.lnsantos.pet.theme.PetTheme
 
 class HomeActivity : ComponentActivity() {
@@ -12,7 +13,9 @@ class HomeActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             PetTheme {
-                Text(text = "Teste")
+                PetSurface {
+                    Text(text = "Teste")
+                }
             }
         }
     }
