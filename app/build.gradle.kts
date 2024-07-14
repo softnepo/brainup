@@ -1,6 +1,8 @@
 plugins {
     id("brainup.app.build")
     id("brainup.build.type")
+    id("kotlin-kapt")
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -33,15 +35,28 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
+    kapt {
+        correctErrorTypes = true
+        useBuildCache = true
+    }
 }
 
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.lifecycle.runtime)
 
+    implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.activity)
     implementation(project(":pet"))
-    
+
+    implementation(libs.dagger.hilt.android)
+    kapt(libs.dagger.hilt.compiler)
+
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.room.runtime)
+    kapt(libs.androidx.room.compiler)
+
     implementation(libs.androidx.navigation.ui)
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.androidx.navigation.compose)

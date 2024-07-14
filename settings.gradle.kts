@@ -8,7 +8,6 @@ pluginManagement {
 }
 enableFeaturePreview("VERSION_CATALOGS")
 dependencyResolutionManagement {
-   // includeBuild("global-manager")
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
