@@ -29,6 +29,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.invisibleToUser
@@ -45,7 +47,7 @@ fun GatewayScreen(
     onNextClick: String.() -> Unit,
     isLoading: Boolean = false
 ) {
-    var text by remember { mutableStateOf(String()) }
+    var (text, setText) = remember { mutableStateOf(String()) }
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -61,7 +63,7 @@ fun GatewayScreen(
             NameEditText(
                 modifier = Modifier.padding(top = 40.dp),
                 text = text,
-                onValueChange = { text = this }
+                onValueChange = setText
             )
         }
 
@@ -69,7 +71,8 @@ fun GatewayScreen(
             Row(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(32.dp),
+                    .padding(32.dp)
+                    .align(Alignment.Center),
                 verticalAlignment = Alignment.Bottom,
                 horizontalArrangement = Arrangement.End
             ) {
