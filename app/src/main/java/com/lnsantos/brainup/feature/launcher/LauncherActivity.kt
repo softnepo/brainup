@@ -1,6 +1,8 @@
-package com.lnsantos.brainup
+package com.lnsantos.brainup.feature.launcher
 
 import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP
+import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -19,20 +21,7 @@ class LauncherActivity : ComponentActivity() {
         setContent {
             PetTheme {
                 PetSurface {
-                    Column {
-                        PetText(
-                            text = "Hello",
-                            type = PetTextStyle.TITLE
-                        )
-                        PetText(
-                            text = "Hello",
-                            type = PetTextStyle.SUBTITLE
-                        )
-                        PetText(
-                            text = "Hello",
-                            type = PetTextStyle.DESCRIPTION
-                        )
-                    }
+
                 }
             }
         }
@@ -40,6 +29,9 @@ class LauncherActivity : ComponentActivity() {
 
     override fun onResume() {
         super.onResume()
-        startActivity(Intent(this, GatewayActivity::class.java))
+        startActivity(Intent(this, GatewayActivity::class.java).apply {
+            flags = FLAG_ACTIVITY_CLEAR_TOP or FLAG_ACTIVITY_NEW_TASK
+        })
+        finish()
     }
 }

@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -25,10 +26,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import com.lnsantos.pet.circle.PetCircle
+import com.lnsantos.pet.core.PetStyle
+import com.lnsantos.pet.core.border.Enabled
+import com.lnsantos.pet.surface.PetSurface
 import com.lnsantos.pet.text.PetText
 import com.lnsantos.pet.text.PetTextIndicator
 import com.lnsantos.pet.text.model.PetTextStyle
@@ -57,6 +62,10 @@ class PreviewActivity : ComponentActivity() {
                     item(3) {
                         Toolbar("Circle")
                         PreviewPetCircle()
+                    }
+                    item(4) {
+                        Toolbar(text = "Surface")
+                        PreviewPetSurface()
                     }
                 }
             }
@@ -92,7 +101,11 @@ class PreviewActivity : ComponentActivity() {
     ){
         Column(Modifier.fillMaxWidth()) {
             Text(text = text, fontSize = TextUnit(14f, TextUnitType.Sp))
-            Row(Modifier.height(Dp(2f)).fillMaxWidth().background(Color.Black)){}
+            Row(
+                Modifier
+                    .height(Dp(2f))
+                    .fillMaxWidth()
+                    .background(Color.Black)){}
             Spacer(modifier = Modifier.size(Dp(8f)))
         }
     }
@@ -140,4 +153,52 @@ class PreviewActivity : ComponentActivity() {
             )
         }
     }
+
+    @Preview
+    @Composable
+    @OptIn(ExperimentalLayoutApi::class)
+    private fun PreviewPetSurface() {
+        FlowColumn {
+            PetSurface(
+                modifier = Modifier.size(Dp(100f)),
+                background = Color.Green
+            ) {}
+            Spacer(modifier = Modifier.size(Dp(8f)))
+            PetSurface(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(Dp(60f)),
+                background = Color.Green,
+                border = Enabled()
+            ) {}
+            Spacer(modifier = Modifier.size(Dp(8f)))
+            PetSurface(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(Dp(60f)),
+                background = Color.Blue,
+                style = PetStyle.LOW,
+                border = Enabled()
+            ) {}
+            Spacer(modifier = Modifier.size(Dp(8f)))
+            PetSurface(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(Dp(60f)),
+                background = Color.Blue,
+                style = PetStyle.MEDIUM,
+                border = Enabled()
+            ) {}
+            Spacer(modifier = Modifier.size(Dp(8f)))
+            PetSurface(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(Dp(60f)),
+                background = Color.Blue,
+                style = PetStyle.HIGH,
+                border = Enabled()
+            ) {}
+        }
+    }
+
 }
