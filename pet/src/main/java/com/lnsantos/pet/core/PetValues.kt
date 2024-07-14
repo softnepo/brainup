@@ -1,8 +1,10 @@
 package com.lnsantos.pet.core
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.Typography
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -99,6 +101,9 @@ public sealed class PetValues {
         )
 
         fun getColorsByScheme(isDark: Boolean) = if (isDark) dark else light
+
+        @Composable
+        fun get() = getColorsByScheme(isSystemInDarkTheme())
     }
 
     object FontFamily : PetValues() {

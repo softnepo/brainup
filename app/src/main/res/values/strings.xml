@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Brain up</string>
+
+    <string name="gateway_title">BEM VINDO</string>
+    <string name="gateway_description">Como podemos chama-lo ?</string>
+
+    <string name="gateway_description_error">Falha ao cadastrar usuario</string>
 </resources>
