@@ -3,6 +3,8 @@ package com.lnsantos.brainup.di
 import android.app.Application
 import android.content.Context
 import android.content.res.Resources
+import com.lnsantos.brainup.foundation.session.BrainUpSession
+import com.lnsantos.brainup.foundation.session.BrainUpSessionImpl
 import com.lnsantos.brainup.frameworks.room.AppDatabase
 import com.lnsantos.brainup.frameworks.room.DatabaseSettings
 import com.lnsantos.brainup.frameworks.room.deck.DeckAPI
@@ -44,5 +46,9 @@ class LauncherModule {
     fun providerDeckApi(
         database: AppDatabase
     ): DeckAPI = database.deckApi()
+
+    @Provides
+    @Singleton
+    fun providerBrainUpSession() : BrainUpSession = BrainUpSessionImpl()
 
 }

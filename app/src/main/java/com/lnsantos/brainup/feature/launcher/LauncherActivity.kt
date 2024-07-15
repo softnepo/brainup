@@ -29,13 +29,15 @@ class LauncherActivity : ComponentActivity() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewmodel.direction.collect { direction ->
-                    when (direction) {
-                        NextDirection.HOME -> routerIntent.startHomeActivity()
+                    val (deeplink, profileId) = direction
+
+                    when (deeplink) {
+                        NextDirection.HOME -> routerIntent.startHomeActivity(profileId)
                         NextDirection.GATEWAY -> routerIntent.startGatewayActivity()
-                        else -> Log.d("sd", "init process")
+                        else -> Log.d(this::class.simpleName, "skip rule")
                     }
 
-                    if (direction != null) finish()
+                    if (deeplink != null) finish()
                 }
             }
         }

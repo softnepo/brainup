@@ -6,9 +6,12 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.lnsantos.pet.core.PetStyle
 import com.lnsantos.pet.core.factory.rememberPetStyleClip
+import com.lnsantos.pet.text.PetText
+import com.lnsantos.pet.text.model.PetTextStyle
 import com.lnsantos.pet.theme.PetTheme
 
 @Composable
@@ -28,6 +31,32 @@ fun PetButton(
     ) 
 }
 
+@Composable
+fun PetTextButton(
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit = {},
+    enabled: Boolean = true,
+    style: PetStyle = PetStyle.LOW,
+    text: String,
+    textColor: Color? = null,
+    textStyle: PetTextStyle = PetTextStyle.TITLE
+) {
+    Button(
+        modifier = Modifier.then(modifier),
+        onClick = onClick,
+        enabled = enabled,
+        shape = rememberPetStyleClip { style },
+        content = {
+            PetText(
+                text = text,
+                type = textStyle,
+                isSemanticHeader = false,
+                textColor = textColor
+            )
+        }
+    )
+}
+
 @Preview(
     uiMode = Configuration.UI_MODE_NIGHT_YES
 )
@@ -40,6 +69,17 @@ private fun PreviewButton() {
         ) {
             Text(text = "Login")
         }
+    }
+}
+
+@Preview
+@Composable
+private fun PreviewTextButton() {
+    PetTheme {
+        PetTextButton(
+            text = "abcd-efgh-ij",
+            textColor = Color.White
+        )
     }
 }
 

@@ -9,5 +9,9 @@
     <string name="home_widget_my_cards">Meus cards</string>
     <string name="home_widget_preferences">Opções</string>
 
+    <string name="deck_screen_header">Meus baralhos</string>
+    <string name="deck_empty_description">Crie seu primeiro\n<b><i>Baralho</i></b></string>
+    <string name="deck_empty_button">Criar baralho</string>
+
     <string name="accessibility_toolbar_back">Voltar</string>
 </resources>

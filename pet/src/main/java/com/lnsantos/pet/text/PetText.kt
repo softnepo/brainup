@@ -6,6 +6,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.lnsantos.pet.text.factory.PetTextStyleFactory
 import com.lnsantos.pet.text.model.PetTextStyle
@@ -15,11 +16,13 @@ fun PetText(
     modifier: Modifier = Modifier,
     text: String,
     type: PetTextStyle,
-    textColor: Color? = null
+    textColor: Color? = null,
+    isSemanticHeader: Boolean = true,
+    textAlign: TextAlign? = null
 ) {
     val factory = PetTextStyleFactory().invoke(type)
 
-    if (type == PetTextStyle.TITLE) {
+    if (type == PetTextStyle.TITLE && isSemanticHeader) {
         modifier.semantics { heading() }
     }
 
@@ -29,7 +32,8 @@ fun PetText(
         fontFamily = factory.fontFamily,
         fontSize = factory.fontSize,
         fontWeight = factory.fontWeight,
-        color = textColor ?: factory.color
+        color = textColor ?: factory.color,
+        textAlign = textAlign
     )
 }
 

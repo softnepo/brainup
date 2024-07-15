@@ -4,7 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.scaleOut
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.Image
@@ -42,12 +43,9 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.lnsantos.brainup.R
-import com.lnsantos.brainup.feature.deck.DeckScreen
 import com.lnsantos.brainup.feature.deck.deckNavigationHost
-import com.lnsantos.brainup.feature.home.widgets.WidgetMemory
 import com.lnsantos.brainup.foundation.navigation.Router
 import com.lnsantos.pet.core.PetValues
 import com.lnsantos.pet.surface.PetSurface
@@ -84,7 +82,21 @@ class HomeActivity : ComponentActivity() {
                 .fillMaxWidth()
                 .padding(16.dp)
                 .semantics { heading() }
+                .animateContentSize()
         ) {
+
+            AnimatedVisibility(
+                visible = !showBackButton,
+                enter = slideInHorizontally(),
+                exit = fadeOut()
+            ) {
+                Image(
+                    modifier = Modifier.height(48.dp),
+                    painter = painterResource(id = R.drawable.ic_logo),
+                    contentDescription = null,
+                    alignment = AbsoluteAlignment.CenterLeft
+                )
+            }
             AnimatedVisibility(
                 visible = showBackButton,
                 enter = slideInHorizontally(),
@@ -100,18 +112,7 @@ class HomeActivity : ComponentActivity() {
                     tint = PetValues.Colors.get().tertiary
                 )
             }
-            AnimatedVisibility(
-                visible = !showBackButton,
-                enter = slideInHorizontally(),
-                exit = scaleOut()
-            ) {
-                Image(
-                    modifier = Modifier.height(48.dp),
-                    painter = painterResource(id = R.drawable.ic_logo),
-                    contentDescription = null,
-                    alignment = AbsoluteAlignment.CenterLeft
-                )
-            }
+
 
             PetText(
                 text = title,
@@ -154,13 +155,11 @@ class HomeActivity : ComponentActivity() {
                         modifier = Modifier
                             .offset(x = 4.dp, y = 4.dp)
                             .padding(16.dp)
-                            .shadow(
-                                elevation = 5.dp,
-                                shape = RoundedCornerShape(12.dp)
-                            )
+                            .shadow(elevation = 5.dp, shape = RoundedCornerShape(12.dp))
                             .background(PetValues.Colors.get().secondary)
-                            .fillMaxSize()
-                    ) {}
+                            .fillMaxSize(),
+                        content = { }
+                    )
                     NavHost(
                         navController = navController,
                         startDestination = Router.HOME.router,
@@ -177,9 +176,7 @@ class HomeActivity : ComponentActivity() {
                             onClickWidget = { navController.navigate(it.deeplink) },
                             onClickMain = { }
                         )
-                        deckNavigationHost {
-                            setShowBackButton.invoke(true)
-                        }
+                        deckNavigationHost { setShowBackButton.invoke(true) }
                     }
                 }
             }

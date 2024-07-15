@@ -9,6 +9,8 @@ import com.lnsantos.brainup.feature.home.HomeActivity
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
+const val KEY_PROFILE_ID = "KEY_EXTRA_PROFILE_ID"
+
 class RouterIntent @Inject constructor(
     @ApplicationContext val application: Context
 ) {
@@ -18,8 +20,13 @@ class RouterIntent @Inject constructor(
         application.startActivity(intent)
     }
 
-    fun startHomeActivity() {
-        val intent = Intent(application, HomeActivity::class.java).applySettings()
+    fun startHomeActivity(
+        profileId: Long?
+    ) {
+        val intent = Intent(application, HomeActivity::class.java)
+            .apply { putExtra(KEY_PROFILE_ID, profileId) }
+            .applySettings()
+
         application.startActivity(intent)
     }
 

@@ -18,7 +18,7 @@ internal class PetTextDescriptionStyle  : SimplePetWrapperComposable<TextStyleMo
             type = TextUnitType.Sp
         ),
         fontFamily = PetValues.FontFamily.default,
-        color = MaterialTheme.colorScheme.primary
+        color = MaterialTheme.colorScheme.tertiary
     )
 
     companion object {

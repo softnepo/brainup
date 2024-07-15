@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 class LauncherUIRule @Inject constructor() {
 
-    operator fun invoke(list: Array<ProfileModel>): NextDirection {
-        return if (list.isNotEmpty()) NextDirection.HOME else NextDirection.GATEWAY
+    operator fun invoke(list: Array<ProfileModel>): Pair<NextDirection, Long?> {
+        return list.firstOrNull()?.let { NextDirection.HOME to it.id } ?: (NextDirection.GATEWAY to null)
     }
 }
