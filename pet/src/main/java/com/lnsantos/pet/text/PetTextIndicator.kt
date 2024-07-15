@@ -19,6 +19,7 @@ fun PetTextIndicator(
     type: PetTextStyle = PetTextStyle.TITLE,
     text: String,
     textColor: Color? = null,
+    enabledClick: Boolean = false,
     onClick: () -> Unit = {}
 ) {
     val sizeCircleByTypeText = when(type) {
@@ -28,7 +29,7 @@ fun PetTextIndicator(
     }
 
     Row(
-        modifier = modifier.clickable(onClick = onClick),
+        modifier = modifier.clickable(onClick = onClick, enabled = enabledClick),
         horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically
     ) {

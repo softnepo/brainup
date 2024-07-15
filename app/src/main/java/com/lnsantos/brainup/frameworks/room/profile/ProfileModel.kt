@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "profile")
 data class ProfileModel(
     @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
+    val id: Long = 0,
 
     @ColumnInfo("name")
     val name: String,

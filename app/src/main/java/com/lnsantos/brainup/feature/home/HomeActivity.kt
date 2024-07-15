@@ -3,14 +3,13 @@ package com.lnsantos.brainup.feature.home
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.animation.AnimatedContentTransitionScope
-import androidx.compose.animation.EnterTransition
-import androidx.compose.animation.core.LinearEasing
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.scaleOut
+import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -20,38 +19,44 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBackIos
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.AbsoluteAlignment
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.focused
 import androidx.compose.ui.semantics.heading
 import androidx.compose.ui.semantics.requestFocus
+import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavBackStackEntry
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.lnsantos.brainup.R
+import com.lnsantos.brainup.feature.deck.DeckScreen
+import com.lnsantos.brainup.feature.deck.deckNavigationHost
 import com.lnsantos.brainup.feature.home.widgets.WidgetMemory
 import com.lnsantos.brainup.foundation.navigation.Router
-import com.lnsantos.pet.button.PetButton
 import com.lnsantos.pet.core.PetValues
 import com.lnsantos.pet.surface.PetSurface
 import com.lnsantos.pet.text.PetText
 import com.lnsantos.pet.text.model.PetTextStyle
 import com.lnsantos.pet.theme.PetTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,20 +74,44 @@ class HomeActivity : ComponentActivity() {
     @Preview
     private fun TopHeader(
         modifier: Modifier = Modifier,
-        title: String = ""
+        title: String = "",
+        showBackButton: Boolean = false,
+        onBackStack : () -> Unit = { }
     ) {
+
         Row(
             modifier = modifier
                 .fillMaxWidth()
                 .padding(16.dp)
                 .semantics { heading() }
         ) {
-            Image(
-                modifier = Modifier.height(48.dp),
-                painter = painterResource(id = R.drawable.ic_logo),
-                contentDescription = null,
-                alignment = AbsoluteAlignment.CenterLeft
-            )
+            AnimatedVisibility(
+                visible = showBackButton,
+                enter = slideInHorizontally(),
+                exit = slideOutHorizontally()
+            ) {
+                Icon(
+                    modifier = Modifier
+                        .size(48.dp)
+                        .semantics { role = Role.Button }
+                        .clickable(onClick = onBackStack, enabled = true),
+                    imageVector = Icons.Filled.ArrowBackIos,
+                    contentDescription = stringResource(id = R.string.accessibility_toolbar_back),
+                    tint = PetValues.Colors.get().tertiary
+                )
+            }
+            AnimatedVisibility(
+                visible = !showBackButton,
+                enter = slideInHorizontally(),
+                exit = scaleOut()
+            ) {
+                Image(
+                    modifier = Modifier.height(48.dp),
+                    painter = painterResource(id = R.drawable.ic_logo),
+                    contentDescription = null,
+                    alignment = AbsoluteAlignment.CenterLeft
+                )
+            }
 
             PetText(
                 text = title,
@@ -91,7 +120,7 @@ class HomeActivity : ComponentActivity() {
                     .padding(horizontal = 16.dp)
                     .align(alignment = CenterVertically)
                     .semantics {
-                        requestFocus { true}
+                        requestFocus { true }
                         heading()
                         focused = true
                     }
@@ -103,6 +132,7 @@ class HomeActivity : ComponentActivity() {
     @Preview
     private fun Content() {
         val navController = rememberNavController()
+        val (showBackButton, setShowBackButton) = remember { mutableStateOf(false) }
 
         Box(
             modifier = Modifier.fillMaxSize()
@@ -111,7 +141,11 @@ class HomeActivity : ComponentActivity() {
                 modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
-                TopHeader(title = stringResource(id = R.string.app_name))
+                TopHeader(
+                    title = stringResource(id = R.string.app_name),
+                    showBackButton = showBackButton,
+                    onBackStack = { navController.popBackStack() }
+                )
 
                 Box(
                     modifier = Modifier.fillMaxSize()
@@ -138,19 +172,13 @@ class HomeActivity : ComponentActivity() {
                             )
                             .fillMaxSize()
                     ) {
-                        composable(route = Router.HOME.router) {
-                            HomeScreen(
-                                widgets = WidgetMemory.getWidget(),
-                                onClickWidget = { navController.navigate(it.deeplink) },
-                                onClickMain = { }
-                            )
-                        }
-                        composable(route = Router.MY_CARD.router) {
-                            HomeScreen(
-                                widgets = listOf(),
-                                onClickWidget = { navController.navigate(it.deeplink) },
-                                onClickMain = { }
-                            )
+                        homeNavigationHost(
+                            init = { setShowBackButton.invoke(false) },
+                            onClickWidget = { navController.navigate(it.deeplink) },
+                            onClickMain = { }
+                        )
+                        deckNavigationHost {
+                            setShowBackButton.invoke(true)
                         }
                     }
                 }

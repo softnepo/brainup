@@ -8,4 +8,6 @@
 
     <string name="home_widget_my_cards">Meus cards</string>
     <string name="home_widget_preferences">Opções</string>
+
+    <string name="accessibility_toolbar_back">Voltar</string>
 </resources>

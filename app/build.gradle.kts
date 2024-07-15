@@ -52,6 +52,7 @@ dependencies {
 
     implementation(libs.androidx.core.splash)
 
+    implementation(libs.dagger.hilt.navigation)
     implementation(libs.dagger.hilt.android)
     kapt(libs.dagger.hilt.compiler)
 

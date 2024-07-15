@@ -5,6 +5,8 @@ import android.content.Context
 import android.content.res.Resources
 import com.lnsantos.brainup.frameworks.room.AppDatabase
 import com.lnsantos.brainup.frameworks.room.DatabaseSettings
+import com.lnsantos.brainup.frameworks.room.deck.DeckAPI
+import com.lnsantos.brainup.frameworks.room.profile.ProfileAPI
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,7 +21,7 @@ class LauncherModule {
     @Provides
     fun providerApplication(
         @ApplicationContext application: Application
-    ) : Application = application
+    ): Application = application
 
     @Provides
     fun providerResource(
@@ -31,10 +33,16 @@ class LauncherModule {
     fun providerAppDatabase(
         @ApplicationContext context: Context,
         settings: DatabaseSettings
-    ) = settings.create(context).build()
+    ): AppDatabase = settings.create(context).build()
 
     @Provides
     fun providerProfileApi(
         database: AppDatabase
-    ) = database.profileApi()
+    ): ProfileAPI = database.profileApi()
+
+    @Provides
+    fun providerDeckApi(
+        database: AppDatabase
+    ): DeckAPI = database.deckApi()
+
 }
