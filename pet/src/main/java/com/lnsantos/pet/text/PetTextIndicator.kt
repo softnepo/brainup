@@ -20,8 +20,12 @@ fun PetTextIndicator(
     text: String,
     textColor: Color? = null,
     enabledClick: Boolean = false,
-    onClick: () -> Unit = {}
+    onClick: () -> Unit = {},
+    isVisible: Boolean = true
 ) {
+
+    if (!isVisible) return
+
     val sizeCircleByTypeText = when(type) {
         PetTextStyle.TITLE -> PetValues.Spacing.High.div(2)
         PetTextStyle.SUBTITLE -> PetValues.Spacing.Medium.div(1.5f)

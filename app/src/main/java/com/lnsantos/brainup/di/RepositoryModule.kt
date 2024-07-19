@@ -1,7 +1,9 @@
 package com.lnsantos.brainup.di
 
+import com.lnsantos.brainup.data.ICardRepository
 import com.lnsantos.brainup.data.IDeckRepository
 import com.lnsantos.brainup.data.IProfileRepository
+import com.lnsantos.brainup.data.repository.CardRoomRepository
 import com.lnsantos.brainup.data.repository.DeckRoomRepository
 import com.lnsantos.brainup.data.repository.ProfileRoomRepository
 import dagger.Binds
@@ -22,4 +24,10 @@ abstract class RepositoryModule {
     abstract fun bindDeckRoomRepository(
         repository: DeckRoomRepository
     ): IDeckRepository
+
+    @Binds
+    abstract fun bindCardRoomRepository(
+        repository: CardRoomRepository
+    ) : ICardRepository
+
 }
