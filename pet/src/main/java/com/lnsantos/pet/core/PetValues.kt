@@ -80,7 +80,7 @@ public sealed class PetValues {
         )
     }
     object Colors : PetValues() {
-        val light = lightColorScheme(
+        private val light = lightColorScheme(
             primary = Primary,
             onSurfaceVariant = PrimaryVariant,
             secondary = Secondary,
@@ -90,7 +90,7 @@ public sealed class PetValues {
             surface = Background
         )
 
-        val dark = darkColorScheme(
+        private val dark = darkColorScheme(
             primary = PrimaryDark,
             onSurfaceVariant = PrimaryVariantDark,
             secondary = SecondaryDark,
@@ -104,6 +104,9 @@ public sealed class PetValues {
 
         @Composable
         fun get() = getColorsByScheme(isSystemInDarkTheme())
+
+        @Composable
+        fun getNegative() = getColorsByScheme(!isSystemInDarkTheme())
     }
 
     object FontFamily : PetValues() {

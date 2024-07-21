@@ -22,5 +22,9 @@ data class DeckModel(
     @ColumnInfo(name = "deck_name")
     val name: String,
     @ColumnInfo(name = "profile_id")
-    val profileId: Long
+    val profileId: Long,
+    @ColumnInfo(name = "created")
+    val created: String,
+    @ColumnInfo(name = "last_updated")
+    val update: String
 )

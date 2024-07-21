@@ -9,7 +9,7 @@ import javax.inject.Inject
 class DateSupport @Inject constructor() {
 
     companion object {
-        const val PATTERN_ISO8610 = "yyyy-MM-dd'T'HH:mm'Z'"
+        const val PATTERN_ISO8610 = "yyyy-MM-dd'T'HH:mm:ss'Z'"
         const val DEFAULT_TIMEZONE = "UTC"
     }
 

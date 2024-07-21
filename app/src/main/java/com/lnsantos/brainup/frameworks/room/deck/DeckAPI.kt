@@ -17,4 +17,6 @@ interface DeckAPI {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(deck: DeckModel)
 
+    @Query("SELECT * FROM deck WHERE profile_id = :ownerId AND created = :created")
+    suspend fun getDeckByCreateAt(ownerId: Long, created: String) : DeckModel
 }

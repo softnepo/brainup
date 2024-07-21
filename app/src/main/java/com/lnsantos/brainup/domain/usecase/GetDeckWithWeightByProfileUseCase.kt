@@ -5,8 +5,9 @@ import com.lnsantos.brainup.data.IDeckRepository
 import com.lnsantos.brainup.domain.entity.DeckDomain
 import com.lnsantos.brainup.frameworks.room.deck.DeckModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.channelFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -16,12 +17,12 @@ class GetDeckWithWeightByProfileUseCase @Inject constructor(
     private val repositoryCard: ICardRepository
 ) {
 
-    operator fun invoke(): Flow<DeckDomain?> = flow {
+    operator fun invoke(): Flow<DeckDomain?> = channelFlow {
         repositoryDeck
             .getAllDeckByProfileSelected()
             .takeIf { it.isNotEmpty() }
-            ?.forEach { deck -> findCardByDeckAsync(deck) { this@flow.emit(it) } }
-            ?: emit(null)
+            ?.forEach { deck -> findCardByDeckAsync(deck) { send(it) } }
+            ?: send(null)
     }
 
     private suspend fun findCardByDeckAsync(
@@ -35,7 +36,7 @@ class GetDeckWithWeightByProfileUseCase @Inject constructor(
                 name = deck.name,
                 weight = cards.size
             )
-
+            delay(200)
             onFinish(domain)
         }
     }

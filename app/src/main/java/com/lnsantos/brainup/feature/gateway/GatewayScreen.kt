@@ -47,7 +47,7 @@ fun GatewayScreen(
     onNextClick: String.() -> Unit,
     isLoading: Boolean = false
 ) {
-    var (text, setText) = remember { mutableStateOf(String()) }
+    val (text, setText) = remember { mutableStateOf(String()) }
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -97,6 +97,7 @@ fun GatewayScreen(
     }
 }
 
+// migration to future
 @Composable
 private fun NameEditText(
     modifier: Modifier = Modifier,

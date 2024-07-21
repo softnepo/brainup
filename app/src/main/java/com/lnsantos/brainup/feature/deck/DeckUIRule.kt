@@ -6,7 +6,6 @@ import com.lnsantos.brainup.domain.entity.DeckDomain
 import com.lnsantos.brainup.feature.deck.model.DeckCardUI
 import com.lnsantos.brainup.feature.deck.model.DeckState
 import com.lnsantos.brainup.feature.deck.model.DeckStateType.ListDeck
-import com.lnsantos.brainup.feature.deck.model.DeckStateType.Loading
 import com.lnsantos.brainup.feature.deck.model.DeckStateType.EmptyList
 import javax.inject.Inject
 
@@ -27,7 +26,7 @@ class DeckUIRule @Inject constructor(
             return state.copy(status = EmptyList)
         }
 
-        if (state.status is Loading) {
+        if (state.status !is ListDeck) {
             return DeckState(
                 title = resource.getString(R.string.deck_screen_header),
                 status = ListDeck(
@@ -36,9 +35,24 @@ class DeckUIRule @Inject constructor(
             )
         }
 
-        val deckStatus = state.status as ListDeck
-        val currentDecks = deckStatus.decks + deck.toUI()
+        val deckStatus = state.status
+        val currentDecks = listOf(deck.toUI()) + deckStatus.decks
 
         return state.copy(status = ListDeck(currentDecks))
+    }
+
+    fun removeDeck(state: DeckState, deckId: Long) : DeckState {
+        if (state.status !is ListDeck) return state
+
+        val listDeck = state.status
+        val newList = listDeck.decks.filterNot {
+            it.id == deckId
+        }
+
+        if (newList.isEmpty()) {
+            return state.copy(status = EmptyList)
+        }
+
+        return state.copy(status = ListDeck(newList))
     }
 }

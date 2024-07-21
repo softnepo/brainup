@@ -33,7 +33,8 @@
 
         <activity
             android:name=".feature.home.HomeActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan|adjustResize"/>
     </application>
 
 </manifest>

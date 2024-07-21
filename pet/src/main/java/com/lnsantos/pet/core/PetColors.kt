@@ -7,7 +7,7 @@ val PrimaryVariant = Primary
 val Secondary = Color(0xFFFA7E61)
 val SecondaryVariant = Secondary
 val Terliary = Color(0xFFFEE1C7)
-val Background = Color(0xFF4C1E4F)
+val Background = Color(0xFFE99CEE)
 val Surface = Background
 val Error = Color(0xFF880202)
 
