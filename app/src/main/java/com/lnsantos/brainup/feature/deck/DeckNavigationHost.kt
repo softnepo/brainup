@@ -7,7 +7,7 @@ import com.lnsantos.brainup.foundation.navigation.Router
 fun NavGraphBuilder.deckNavigationHost(
     init : () -> Unit
 ) {
-    composable(route = Router.MY_CARD.router) {
+    composable(route = Router.DECKS.router) {
         init()
         DeckScreen()
     }

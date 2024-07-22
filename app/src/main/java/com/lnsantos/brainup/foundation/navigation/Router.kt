@@ -2,5 +2,5 @@ package com.lnsantos.brainup.foundation.navigation
 
 enum class Router(val router: String) {
     HOME(router = "home"),
-    MY_CARD(router = "mycards")
+    DECKS(router = "decks")
 }
