@@ -13,5 +13,11 @@
     <string name="deck_empty_description">Crie seu primeiro\n<b><i>Baralho</i></b></string>
     <string name="deck_empty_button">Criar baralho</string>
 
-    <string name="accessibility_toolbar_back">Voltar</string>
+    <string name="cards_screen_header">Meus cartões</string>
+    <string name="cards_screen_card_front">Frente</string>
+    <string name="cards_screen_card_hidden">Escondido</string>
+
+    <string name="cards_screen_empty_description">Crie seu primeiro\n<b><i>Cartão</i></b></string>
+    <string name="cards_screen_empty_button">Criar cartão</string>
+    <string name="cards_screen_create_button">Criar</string>
 </resources>

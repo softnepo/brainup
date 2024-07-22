@@ -1,4 +1,4 @@
-package com.lnsantos.brainup.feature.deck.scenario
+package com.lnsantos.brainup.foundation.ui.scenario
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -10,14 +10,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.lnsantos.brainup.R
 import com.lnsantos.pet.button.PetTextButton
 import com.lnsantos.pet.text.PetText
 import com.lnsantos.pet.text.model.PetTextStyle
 
 @Composable
-fun DeckEmptyScenario(
-    onClickCreateDeck: () -> Unit
+fun EmptyScenario(
+    onClick: () -> Unit,
+    description: Int,
+    textButton: Int
 ) {
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -25,15 +26,15 @@ fun DeckEmptyScenario(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         PetText(
-            text = stringResource(id = R.string.deck_empty_description),
+            text = stringResource(id = description),
             type = PetTextStyle.TITLE,
             textAlign = TextAlign.Center
         )
         PetTextButton(
-            text = stringResource(id = R.string.deck_empty_button),
+            text = stringResource(id = textButton),
             textStyle = PetTextStyle.DESCRIPTION,
             modifier = Modifier.padding(top = 16.dp),
-            onClick = onClickCreateDeck
+            onClick = onClick
         )
     }
 }

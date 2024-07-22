@@ -3,6 +3,7 @@ package com.lnsantos.pet.surface
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -91,8 +92,8 @@ private fun PetBorder.createSetting(
 )
 private fun PreviewPetSurface() {
     PetSurface(
-        modifier = Modifier,
-        style = PetStyle.HIGH,
+        modifier = Modifier.fillMaxSize(),
+        style = PetStyle.LOW,
         border = Enabled(),
         background = Color.White
     ) {

@@ -30,8 +30,8 @@ import com.lnsantos.brainup.feature.deck.model.DeckModalOptions.Create
 import com.lnsantos.brainup.feature.deck.model.DeckModalOptions.Edit
 import com.lnsantos.brainup.feature.deck.model.DeckModalOptions.FirstCreate
 import com.lnsantos.brainup.feature.deck.model.DeckStateType
-import com.lnsantos.brainup.feature.deck.scenario.DeckEmptyScenario
 import com.lnsantos.brainup.feature.deck.scenario.DeckListScenario
+import com.lnsantos.brainup.foundation.ui.scenario.EmptyScenario
 import com.lnsantos.pet.button.PetTextButton
 import com.lnsantos.pet.core.PetValues
 import com.lnsantos.pet.text.PetTextIndicator
@@ -40,7 +40,8 @@ import com.lnsantos.pet.text.model.PetTextStyle
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DeckScreen(
-    viewModel: DeckViewModel = hiltViewModel<DeckViewModel>()
+    viewModel: DeckViewModel = hiltViewModel<DeckViewModel>(),
+    onDeckSelected: Long.() -> Unit
 ) {
     val state = viewModel.state.collectAsState()
     var bottomSheetController by remember { mutableStateOf<DeckModalOptions>(Hidden) }
@@ -67,9 +68,11 @@ fun DeckScreen(
                 contentAlignment = Alignment.Center
             ) { CircularProgressIndicator() }
 
-            is DeckStateType.EmptyList -> DeckEmptyScenario {
-                bottomSheetController = Create
-            }
+            is DeckStateType.EmptyList -> EmptyScenario(
+                description = R.string.deck_empty_description,
+                textButton = R.string.deck_empty_button,
+                onClick = { bottomSheetController = Create }
+            )
 
             is DeckStateType.ListDeck -> {
                 Column(
@@ -90,9 +93,7 @@ fun DeckScreen(
                 }
                 DeckListScenario(
                     decks = data.decks,
-                    onClickDeck = {
-                        // go to screen list cards
-                    },
+                    onClickDeck = { onDeckSelected(it.id) },
                     onLongClick = {
                         bottomSheetController = Hidden
                         bottomSheetController = Options(it)

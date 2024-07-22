@@ -45,6 +45,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.lnsantos.brainup.R
+import com.lnsantos.brainup.feature.card.cardNavigationHost
 import com.lnsantos.brainup.feature.deck.deckNavigationHost
 import com.lnsantos.brainup.foundation.navigation.Router
 import com.lnsantos.pet.core.PetValues
@@ -74,7 +75,7 @@ class HomeActivity : ComponentActivity() {
         modifier: Modifier = Modifier,
         title: String = "",
         showBackButton: Boolean = false,
-        onBackStack : () -> Unit = { }
+        onBackStack: () -> Unit = { }
     ) {
 
         Row(
@@ -134,19 +135,24 @@ class HomeActivity : ComponentActivity() {
     private fun Content() {
         val navController = rememberNavController()
         val (showBackButton, setShowBackButton) = remember { mutableStateOf(false) }
+        val (showHeader, setHeader) = remember { mutableStateOf(true) }
 
         Box(
             modifier = Modifier.fillMaxSize()
         ) {
             Column(
-                modifier = Modifier.fillMaxSize(),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .animateContentSize(),
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
-                TopHeader(
-                    title = stringResource(id = R.string.app_name),
-                    showBackButton = showBackButton,
-                    onBackStack = { navController.popBackStack() }
-                )
+                if (showHeader) {
+                    TopHeader(
+                        title = stringResource(id = R.string.app_name),
+                        showBackButton = showBackButton,
+                        onBackStack = { navController.popBackStack() }
+                    )
+                }
 
                 Box(
                     modifier = Modifier.fillMaxSize()
@@ -172,11 +178,26 @@ class HomeActivity : ComponentActivity() {
                             .fillMaxSize()
                     ) {
                         homeNavigationHost(
-                            init = { setShowBackButton.invoke(false) },
+                            init = {
+                                setShowBackButton.invoke(false)
+                                setHeader.invoke(true)
+                            },
                             onClickWidget = { navController.navigate(it.deeplink) },
                             onClickMain = { }
                         )
-                        deckNavigationHost { setShowBackButton.invoke(true) }
+                        deckNavigationHost(
+                            init = {
+                                setShowBackButton.invoke(true)
+                                setHeader.invoke(true)
+                            },
+                            onDeckSelected = { navController.navigate("cards/$this") }
+                        )
+                        cardNavigationHost(
+                            init = { setHeader.invoke(false) },
+                            onBackScreen = {
+                                navController.popBackStack()
+                            }
+                        )
                     }
                 }
             }

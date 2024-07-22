@@ -17,6 +17,10 @@ class CardRoomRepository @Inject constructor(
         return api.getAllCardsByDeckOriginId(originId)
     }
 
+    override suspend fun getCardByCreatedAt(ownerId: Long, created: String): CardModel {
+        return api.getCardByCreateAt(ownerId, created)
+    }
+
     override suspend fun delete(vararg card: CardModel) {
         return api.delete(*card)
     }

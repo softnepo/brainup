@@ -15,7 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.lnsantos.brainup.feature.deck.model.DeckCardUI
+import com.lnsantos.brainup.feature.deck.model.DeckUI
 import com.lnsantos.pet.core.PetValues
 import com.lnsantos.pet.text.PetText
 import com.lnsantos.pet.text.model.PetTextStyle
@@ -23,9 +23,9 @@ import com.lnsantos.pet.text.model.PetTextStyle
 @Composable
 fun DeckListScenario(
     modifier: Modifier = Modifier,
-    decks: List<DeckCardUI> = listOf(),
-    onClickDeck: (DeckCardUI) -> Unit,
-    onLongClick: (DeckCardUI) -> Unit
+    decks: List<DeckUI> = listOf(),
+    onClickDeck: (DeckUI) -> Unit,
+    onLongClick: (DeckUI) -> Unit
 ) {
     LazyColumn(
         modifier = Modifier
@@ -43,9 +43,9 @@ fun DeckListScenario(
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 private fun PreviewCard(
-    cardUI: DeckCardUI,
-    onClick: (DeckCardUI) -> Unit,
-    onLongClick: (DeckCardUI) -> Unit
+    cardUI: DeckUI,
+    onClick: (DeckUI) -> Unit,
+    onLongClick: (DeckUI) -> Unit
 ) {
     Box(
         modifier = Modifier

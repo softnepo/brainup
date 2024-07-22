@@ -29,5 +29,11 @@ data class CardModel(
     val hiddenName: String,
 
     @ColumnInfo(name = "deck_origin_id")
-    val deckOriginId: Long
+    val deckOriginId: Long,
+
+    @ColumnInfo(name = "created")
+    val created: String,
+
+    @ColumnInfo(name = "last_updated")
+    val update: String
 )

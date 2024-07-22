@@ -3,7 +3,7 @@ package com.lnsantos.brainup.feature.deck
 import android.content.res.Resources
 import com.lnsantos.brainup.R
 import com.lnsantos.brainup.domain.entity.DeckDomain
-import com.lnsantos.brainup.feature.deck.model.DeckCardUI
+import com.lnsantos.brainup.feature.deck.model.DeckUI
 import com.lnsantos.brainup.feature.deck.model.DeckState
 import com.lnsantos.brainup.feature.deck.model.DeckStateType.ListDeck
 import com.lnsantos.brainup.feature.deck.model.DeckStateType.EmptyList
@@ -13,8 +13,8 @@ class DeckUIRule @Inject constructor(
     private val resource: Resources
 ) {
 
-    private fun DeckDomain.toUI() : DeckCardUI {
-        return DeckCardUI(id, name, weight ?: 0)
+    private fun DeckDomain.toUI() : DeckUI {
+        return DeckUI(id, name, weight ?: 0)
     }
 
     operator fun invoke(

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="accessibility_toolbar_back">Voltar</string>
+    <string name="accessibility_toolbar_exit">Fechar</string>
+
+    <string name="accessibility_toolbar_create_card">Novo cartão</string>
+</resources>

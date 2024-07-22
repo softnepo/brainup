@@ -15,12 +15,12 @@ object WidgetMemory {
     fun getWidget() = listOf(
         WidgetButtonItem(
             title = stringResource(id = R.string.home_widget_my_cards),
-            deeplink = Router.MY_CARD.router,
+            deeplink = Router.DECKS.router,
             icon = Icons.Filled.AutoAwesomeMotion
         ),
         WidgetButtonItem(
             title = stringResource(id = R.string.home_widget_preferences),
-            deeplink = Router.MY_CARD.router,
+            deeplink = Router.DECKS.router,
             icon = Icons.Filled.Settings
         )
     )

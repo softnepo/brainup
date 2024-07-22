@@ -8,6 +8,8 @@ interface ICardRepository {
 
     suspend fun getAllCardsByDeckOriginId(originId: Long) : List<CardModel>
 
+    suspend fun getCardByCreatedAt(ownerId: Long, created: String) : CardModel
+
     suspend fun delete(vararg card: CardModel)
 
     suspend fun deleteAllCardsByDeckOriginId(originId: Long)

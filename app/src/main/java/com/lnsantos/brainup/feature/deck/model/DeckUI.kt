@@ -1,6 +1,6 @@
 package com.lnsantos.brainup.feature.deck.model
 
-data class DeckCardUI(
+data class DeckUI(
     val id: Long,
     val name: String,
     val totalCards: Int
