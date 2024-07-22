@@ -38,7 +38,7 @@ class DeckUIRule @Inject constructor(
         val deckStatus = state.status
         val currentDecks = listOf(deck.toUI()) + deckStatus.decks
 
-        return state.copy(status = ListDeck(currentDecks))
+        return state.copy(status = ListDeck(currentDecks.sortedByDescending { it.id }))
     }
 
     fun removeDeck(state: DeckState, deckId: Long) : DeckState {
@@ -53,6 +53,15 @@ class DeckUIRule @Inject constructor(
             return state.copy(status = EmptyList)
         }
 
-        return state.copy(status = ListDeck(newList))
+        return state.copy(status = ListDeck(newList.sortedByDescending { it.id }))
+    }
+
+    fun updateDeck(state: DeckState, deck: DeckDomain) : DeckState {
+        if (state.status !is ListDeck) return state
+
+        val listNoneOldDeck = state.status.decks.filterNot { it.id == deck.id }
+        val newList = listNoneOldDeck + deck.toUI()
+
+        return state.copy(status = ListDeck(newList.sortedByDescending { it.id }))
     }
 }

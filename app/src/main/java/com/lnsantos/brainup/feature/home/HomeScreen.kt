@@ -45,12 +45,12 @@ fun HomeScreen(
     onClickMain: () -> Unit = {},
 ) {
     Box(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
+            .background(PetValues.Colors.get().tertiary)
     ) {
         LazyVerticalGrid(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(PetValues.Colors.get().onPrimary),
+            modifier = Modifier.fillMaxSize(),
             columns = GridCells.Adaptive(minSize = 150.dp),
             contentPadding = PaddingValues(12.dp)
         ) {

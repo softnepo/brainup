@@ -37,4 +37,12 @@ class DeckRoomRepository @Inject constructor(
     override suspend fun getDeckByCreateAt(timestamp: String): DeckModel {
         return api.getDeckByCreateAt(session.getProfileId(), timestamp)
     }
+
+    override suspend fun getDeckById(id: Long): DeckModel {
+        return api.getDeckById(session.getProfileId(), id)
+    }
+
+    override suspend fun updateDeck(deck: DeckModel) {
+        api.updateDeck(deck)
+    }
 }

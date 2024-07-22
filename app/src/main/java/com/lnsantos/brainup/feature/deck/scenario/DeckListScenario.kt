@@ -2,7 +2,6 @@ package com.lnsantos.brainup.feature.deck.scenario
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -17,10 +16,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.lnsantos.brainup.feature.deck.model.DeckCardUI
-import com.lnsantos.pet.circle.PetCircle
 import com.lnsantos.pet.core.PetValues
 import com.lnsantos.pet.text.PetText
-import com.lnsantos.pet.text.PetTextIndicator
 import com.lnsantos.pet.text.model.PetTextStyle
 
 @Composable
@@ -61,7 +58,7 @@ private fun PreviewCard(
                 .padding(horizontal = 24.dp)
                 .background(
                     color = PetValues.Colors.getNegative().tertiary,
-                    shape = RoundedCornerShape(16.dp)
+                    shape = RoundedCornerShape(8.dp)
                 )
                 .combinedClickable(
                     onClick = { onClick(cardUI) },
@@ -88,9 +85,9 @@ private fun PreviewCard(
                     .fillMaxSize()
                     .background(
                         color = PetValues.Colors.get().tertiary,
-                        shape = RoundedCornerShape(topEnd = 16.dp, bottomEnd = 16.dp)
+                        shape = RoundedCornerShape(topEnd = 8.dp, bottomEnd = 8.dp)
                     )
-                    .padding(16.dp)
+                    .padding(24.dp)
                     .weight(0.3f, fill = true)
             )
         }
