@@ -23,7 +23,12 @@ import com.lnsantos.brainup.R
 import com.lnsantos.brainup.feature.deck.modal.SimpleModelBottomSheet
 import com.lnsantos.brainup.feature.deck.modal.SimpleOption
 import com.lnsantos.brainup.feature.deck.modal.SimpleOptionsBottomSheet
-import com.lnsantos.brainup.feature.deck.model.DeckCardUI
+import com.lnsantos.brainup.feature.deck.model.DeckModalOptions
+import com.lnsantos.brainup.feature.deck.model.DeckModalOptions.Hidden
+import com.lnsantos.brainup.feature.deck.model.DeckModalOptions.Options
+import com.lnsantos.brainup.feature.deck.model.DeckModalOptions.Create
+import com.lnsantos.brainup.feature.deck.model.DeckModalOptions.Edit
+import com.lnsantos.brainup.feature.deck.model.DeckModalOptions.FirstCreate
 import com.lnsantos.brainup.feature.deck.model.DeckStateType
 import com.lnsantos.brainup.feature.deck.scenario.DeckEmptyScenario
 import com.lnsantos.brainup.feature.deck.scenario.DeckListScenario
@@ -32,22 +37,13 @@ import com.lnsantos.pet.core.PetValues
 import com.lnsantos.pet.text.PetTextIndicator
 import com.lnsantos.pet.text.model.PetTextStyle
 
-sealed class DeckModalOptions {
-    object Hidden : DeckModalOptions()
-    object FirstCreate: DeckModalOptions()
-    object Create : DeckModalOptions()
-
-    data class Options(val deck: DeckCardUI) : DeckModalOptions()
-    data class Edit(val deck: DeckCardUI) : DeckModalOptions()
-}
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DeckScreen(
     viewModel: DeckViewModel = hiltViewModel<DeckViewModel>()
 ) {
     val state = viewModel.state.collectAsState()
-    var bottomSheetController by remember { mutableStateOf<DeckModalOptions>(DeckModalOptions.Hidden) }
+    var bottomSheetController by remember { mutableStateOf<DeckModalOptions>(Hidden) }
 
     Column(
         modifier = Modifier
@@ -72,7 +68,7 @@ fun DeckScreen(
             ) { CircularProgressIndicator() }
 
             is DeckStateType.EmptyList -> DeckEmptyScenario {
-                bottomSheetController = DeckModalOptions.Create
+                bottomSheetController = Create
             }
 
             is DeckStateType.ListDeck -> {
@@ -87,7 +83,7 @@ fun DeckScreen(
                         textStyle = PetTextStyle.DESCRIPTION,
                         modifier = Modifier.padding(top = 16.dp),
                         onClick = {
-                            bottomSheetController = DeckModalOptions.Create
+                            bottomSheetController = Create
                         },
                         textColor = PetValues.Colors.get().tertiary
                     )
@@ -98,8 +94,8 @@ fun DeckScreen(
                         // go to screen list cards
                     },
                     onLongClick = {
-                        bottomSheetController = DeckModalOptions.Hidden
-                        bottomSheetController = DeckModalOptions.Options(it)
+                        bottomSheetController = Hidden
+                        bottomSheetController = Options(it)
                     }
                 )
             }
@@ -107,47 +103,47 @@ fun DeckScreen(
 
         // create strategy in future to delete when in composable function
         when (val data = bottomSheetController) {
-            is DeckModalOptions.FirstCreate -> SimpleModelBottomSheet(
-                onDismiss = { bottomSheetController = DeckModalOptions.Hidden },
+            is FirstCreate -> SimpleModelBottomSheet(
+                onDismiss = { bottomSheetController = Hidden },
                 onCreate = {
                     viewModel.createDeck(it)
-                    bottomSheetController = DeckModalOptions.Hidden
+                    bottomSheetController = Hidden
                 },
                 description = "Crie seu primeiro deck",
                 buttonText = "Criar"
             )
 
-            is DeckModalOptions.Create -> SimpleModelBottomSheet(
-                onDismiss = { bottomSheetController = DeckModalOptions.Hidden },
+            is Create -> SimpleModelBottomSheet(
+                onDismiss = { bottomSheetController = Hidden },
                 onCreate = {
                     viewModel.createDeck(it)
-                    bottomSheetController = DeckModalOptions.Hidden
+                    bottomSheetController = Hidden
                 },
                 description = "Crie um novo deck",
                 buttonText = "Criar agora"
             )
-            is DeckModalOptions.Edit -> SimpleModelBottomSheet(
-                onDismiss = { bottomSheetController = DeckModalOptions.Hidden },
+            is Edit -> SimpleModelBottomSheet(
+                onDismiss = { bottomSheetController = Hidden },
                 onCreate = {
                     viewModel.updateDeckByName(data.deck.id, it)
-                    bottomSheetController = DeckModalOptions.Hidden
+                    bottomSheetController = Hidden
                 },
                 textInit = data.deck.name,
                 description = "Editando nome do deck",
                 buttonText = "Confirmar edição"
             )
-            is DeckModalOptions.Options -> SimpleOptionsBottomSheet(
+            is Options -> SimpleOptionsBottomSheet(
                 options = listOf(
                     SimpleOption(data = 0, title = "Excluir", icon = null),
                     SimpleOption(data = 1, title = "Editar", icon = null)
                 ),
-                onDismissRequest = { bottomSheetController = DeckModalOptions.Hidden },
+                onDismissRequest = { bottomSheetController = Hidden },
                 onClick = {
-                    bottomSheetController = DeckModalOptions.Hidden
+                    bottomSheetController = Hidden
 
                     when(it) {
                         0 -> { viewModel.deleteDeck(data.deck.id) }
-                        1 -> { bottomSheetController = DeckModalOptions.Edit(data.deck) }
+                        1 -> { bottomSheetController = Edit(data.deck) }
                     }
                 }
             )
